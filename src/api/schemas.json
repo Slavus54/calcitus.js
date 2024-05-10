@@ -1,0 +1,26 @@
+[
+    {
+        "title": "Standard 1.0",
+        "level": "Easy",
+        "content": "x + x",
+        "marker": "x"
+    },
+    {
+        "title": "Multiplier Y",
+        "level": "Middle",
+        "content": "(y * 2) + 1",
+        "marker": "y"
+    },
+    {
+        "title": "Powering Base",
+        "level": "High",
+        "content": "x**2",
+        "marker": "x"
+    },
+    {
+        "title": "Interesting Math",
+        "level": "Ultra",
+        "content": "(y - 1)**y + 1",
+        "marker": "y"
+    }
+]

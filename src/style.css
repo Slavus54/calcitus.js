@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+* {
+    font-family: "Lato", sans-serif;
+}
+
+body {
+    text-align: center;
+	  overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+body::-webkit-scrollbar {
+	display: none;         
+}
+
+a {
+    color: #333333;
+    text-decoration: none;
+}
+
+p {
+    letter-spacing: .1rem;
+    opacity: .7;
+}
+
+input[type=range] {
+	position: relative;
+	display: flex;
+	-webkit-appearance: none;
+	width: min(50%, 20rem);
+	height: 0.2rem;
+	border-radius: 1rem;
+	background: #333333;
+	margin: 1rem;
+}
+
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	height: 1.8rem;
+	width: 1rem;
+	border-radius: 0.1rem;
+	background:#125999;
+	cursor: move;
+}
+
+select {
+	font-size: 0.9rem;
+	font-weight: 800;
+	letter-spacing: .1rem;
+	color: #125999;
+	border: none;
+	border-radius: 0.5rem;
+	padding: 1rem;
+	margin: 1rem;
+	user-select: none;
+	cursor: pointer;
+	outline: none;
+}
+
+option {
+	color: #e9e9e9;
+	background-color: #125999;
+}
+
+input[type=text] {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 300;
+    background-color: inherit;
+    border: none;
+    padding: 0rem 1rem;
+    transition: 0.1s ease-in-out;
+    background: transparent;
+    border-bottom: 2px solid #125999;
+    width: min(100%, 14rem);
+    letter-spacing: .05rem;
+    height: 3rem;
+    margin: 0rem 0rem 1rem 0rem;
+    outline: none;
+    user-select: none;
+}
+
+button {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    background-color: inherit;
+    max-height: 3rem;
+    font-size: 1rem;
+    font-weight: 300;
+    padding: 1rem 1.25rem;
+    margin: 0rem;
+    border-radius: 0.2rem;
+    letter-spacing: 0.1rem;
+    overflow: hidden;
+    user-select: none;
+    border: none;
+    cursor: pointer;
+}
+
+canvas {
+    border: 1px solid #333333;
+}
+
+::placeholder  {
+	text-align: center;
+	color: black;
+}
+
+.main {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    color: #181C1F;
+    font-size: 18px;
+    width: 100%;  
+    z-index: 1;
+}
+
+.navbar {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	user-select: none;
+	height: 5rem;
+	width: 100%;
+}
+
+.navbar__item {
+	position: relative;
+	display: flex;
+  	align-items: center;
+ 	text-align: center;
+	height: inherit;
+	text-decoration: none;
+	cursor: pointer;
+	color: #333333;
+	letter-spacing: 0.1rem;
+	font-size: 1.75rem;
+	font-weight: 200;
+	transition: 0.1s ease-in-out;
+}
+
+.schemas {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.schema {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    user-select: none;
+    width: min(50%, 12rem);
+    background-color: #125999;
+    border-radius: .2rem;
+    color: #e9e9e9;
+    padding: .5rem 3rem;
+    margin: 1rem;
+}
+
+.task-area {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 20%;
+    background-color: #333333;
+    color: #e9e9e9;
+    border-radius: .5rem;
+    padding: 1rem 2rem;
+}
+
+.unvisible {
+    display: none;
+}
+
+.items_small {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.box {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: max(12%, 15rem);
+}
+
+.box__item {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid #333333;
+    width: 3rem;
+    height: 3rem;
+    border-radius: .5rem;
+    margin: .2rem;
+}
+
+.box__item-active {
+    border: 2px solid #125999;
+}
+
+#chart {
+    margin-top: 1rem;
+}
