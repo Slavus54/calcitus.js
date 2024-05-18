@@ -1,4 +1,5 @@
 import $ from 'jquery'
+import {fromEvent, interval, take} from 'rxjs'
 import {getCurrentSession, updateGameResults, initialGameResults, deleteGameResults} from '../../storage/storage'
 import {ComponentContainer} from '../ComponentContainer'
 import {ComponentConstructor} from '../../types/types'
@@ -102,9 +103,7 @@ export class Welcome extends ComponentContainer implements ComponentConstructor 
         ctx.stroke()
         ctx.closePath()
 
-        console.log(results)
-
-        saveBtn.on('click', () => {
+        fromEvent(saveBtn, 'click').subscribe(() => {
             const session = getCurrentSession()
             
             if (session !== null) {
@@ -114,9 +113,13 @@ export class Welcome extends ComponentContainer implements ComponentConstructor 
             window.location.reload()
         })
 
-        deleteBtn.on('click', () => {
+        fromEvent(deleteBtn, 'click').subscribe(() => {
             deleteGameResults()
             window.location.reload()
+        })
+    
+        interval(1e3).pipe(take(5)).subscribe(() => {
+            console.log('Here are results', results)
         })
     }
 }

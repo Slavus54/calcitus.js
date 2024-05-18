@@ -1,4 +1,4 @@
-import {SchemaType, TaskResult, LineResult, BoxItem, CheckLineType, GeneratingNum} from '../types/types'
+import {SchemaType, TaskResult, LineResult, BoxItem, CheckLineType, TextTaskGenerator, GeneratingNum} from '../types/types'
 import {levels, marker, symbols, boxSize} from '../env/env'
 
 export const generateTask = (schema: SchemaType, power: number) : TaskResult => {
@@ -35,7 +35,7 @@ export const generateBox = (power: number) : BoxItem[] => {
 }
 
 export const boxPart = (first: number, second: number) => {
-    let symbol = symbols[Math.floor(symbols.length * Math.random())]
+    let symbol = getRandomSymbol()
 
     return `${first}${symbol}${second}`
 }
@@ -45,6 +45,23 @@ export const checkLine = ({start, end, symbol, value}: CheckLineType) => {
 
     return result === end
 }
+
+export const generateTextTask: TextTaskGenerator = (content) => {
+    let text: string = ''
+
+    content.split(' ').map(el => {
+        let value: number = el.length
+        let symbol = getRandomSymbol()
+
+        text += `${value}${symbol}`
+    })
+
+    text = text.slice(0, text.length - 1)
+
+    return {text, value: eval(text), points: Math.floor(text.length / 2)}
+}
+
+const getRandomSymbol = () => symbols[Math.floor(symbols.length * Math.random())]
 
 const countPoints = (level: string, content: string, marker: string) => {
     let result = levels.indexOf(level) + 1

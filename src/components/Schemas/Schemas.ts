@@ -1,3 +1,4 @@
+import $ from 'jquery'
 import {fromEvent} from 'rxjs'
 import {Datus} from 'datus.js'
 import {generateTask} from '../../engine/engine'
@@ -14,10 +15,10 @@ export class Schemas extends ComponentContainer implements ComponentConstructor 
     }
 
     init() {
-        const select = document.getElementById('task-level')
-        const area = document.querySelector('.task-area')
-        const input = document.getElementById('task-inp')
-        const btn = document.querySelector('.check-btn')
+        const select = $('#task-level')
+        const area = $('.task-area')
+        const input = $('#task-inp')
+        const btn = $('.check-btn') 
 
         const schemasAPI = getSchemasFromStorage()
         const datus = new Datus()
@@ -31,7 +32,7 @@ export class Schemas extends ComponentContainer implements ComponentConstructor 
         let allPoints = checkCurrentSession(GameTitles.Schemas)
 
         schemas.forEach(el => {
-        //@ts-ignore
+            //@ts-ignore
             if (el.getAttribute('level') !== level) {
                 //@ts-ignore
                 el.classList.add('unvisible')
@@ -54,16 +55,16 @@ export class Schemas extends ComponentContainer implements ComponentConstructor 
                     task = text
                     checkValue = value
                     award = points
-
-                    area.textContent = `Current Task: ${task}, Points: ${allPoints}`
+             
+                    area.text(`Current Task: ${task}, Points: ${allPoints}`)
                 }
             })
         })
 
-        select.addEventListener('input', e => {
+        select.on('input', e => {
             //@ts-ignore
             level = e.target.value
-            
+                        
             schemas.forEach(el => {
             //@ts-ignore
                 if (el.getAttribute('level') !== level) {
@@ -75,8 +76,8 @@ export class Schemas extends ComponentContainer implements ComponentConstructor 
                 }               
             })
         })
-
-        input.addEventListener('input', e => {
+     
+        input.on('input', e => {
             //@ts-ignore
             inpValue = e.target.value
         })
@@ -84,14 +85,14 @@ export class Schemas extends ComponentContainer implements ComponentConstructor 
         fromEvent(btn, 'click').subscribe(() => {
             //@ts-ignore
             let inputValue = parseInt(inpValue)
-          
+       
             if (inputValue === checkValue) {
                 allPoints += award
 
                 updateCurrentSession({game: GameTitles.Schemas, points: allPoints, timestamp: datus.timestamp()})
             }
 
-            area.textContent = 'Current Task'
+            area.text('Current Task')
             //@ts-ignore
             input.value = ''
             award = 0

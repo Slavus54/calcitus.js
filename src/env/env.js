@@ -6,6 +6,6 @@ export const resultsDBKey = 'results'
 export const marker = '|'
 
 export const levels = ['Easy', 'Middle', 'High', 'Ultra']
-export const symbols = ['+', '-', '*', '/']
+export const symbols = ['+', '-', '*']
 export const pointsLimit = 10
 export const boxSize = 4

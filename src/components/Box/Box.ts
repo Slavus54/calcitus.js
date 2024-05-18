@@ -1,3 +1,4 @@
+import $ from 'jquery'
 import {fromEvent} from 'rxjs'
 import {Datus} from 'datus.js'
 import {generateBox, boxPart} from '../../engine/engine'
@@ -17,9 +18,9 @@ export class Box extends ComponentContainer implements ComponentConstructor {
 
         const box = document.querySelector('.box')
         const parts = box.childNodes
-        const area = document.querySelector('.task-area')
-        const input = document.querySelector('.task-inp')
-        const btn = document.getElementById('btn-check')
+        const area = $('.task-area')
+        const input = $('.task-inp')
+        const btn = $('#btn-check')
 
         const datus = new Datus()
        
@@ -54,7 +55,7 @@ export class Box extends ComponentContainer implements ComponentConstructor {
     
                                 let task = boxPart(pickedParts[0], pickedParts[1])
         
-                                area.textContent = task
+                                area.text(task)
                             }
                         } 
                     })
@@ -64,7 +65,7 @@ export class Box extends ComponentContainer implements ComponentConstructor {
         
         onParts()
 
-        input.addEventListener('input', e => {
+        input.on('input', e => {
             //@ts-ignore
             let data = Number(e.target.value)
 
@@ -72,7 +73,7 @@ export class Box extends ComponentContainer implements ComponentConstructor {
         })
 
         fromEvent(btn, 'click').subscribe(() => {
-            if (value === eval(area.textContent)) {
+            if (value === eval(area.text())) {
                 points += power * 2
             
                 updateCurrentSession({game: GameTitles.Box, points, timestamp: datus.timestamp()})
@@ -90,7 +91,7 @@ export class Box extends ComponentContainer implements ComponentConstructor {
 
             //@ts-ignore
             input.value = ''
-            area.textContent = ''
+            area.text('')
             pickedParts = []
             value = 0
         })

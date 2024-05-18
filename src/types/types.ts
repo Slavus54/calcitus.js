@@ -33,6 +33,12 @@ export interface LineResult {
     end: number
 }
 
+export interface TextTaskResult {
+    text: string
+    value: number
+    points: number
+}
+
 export interface BoxItem {
     column: number
     row: number
@@ -55,9 +61,12 @@ export interface SessionType {
 export enum GameTitles {
     Schemas = 'Schemas',
     Lines = 'Lines',
-    Box = 'Box'
+    Box = 'Box',
+    Text = 'Text'
 }
 
 export type CheckStorageType = (title: string, isSession: boolean) => boolean 
 
 export type GeneratingNum = (power: number) => number
+
+export type TextTaskGenerator = (content: string) => TextTaskResult

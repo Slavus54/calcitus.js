@@ -2,6 +2,7 @@ import {Welcome} from '../components/Welcome/Welcome'
 import {Schemas} from '../components/Schemas/Schemas'
 import {Lines} from '../components/Lines/Lines'
 import {Box} from '../components/Box/Box'
+import {Text} from '../components/Text/Text'
 
 import {RouteItem} from '../types/types'
 
@@ -28,6 +29,12 @@ export const routes: RouteItem[] = [
         title: 'Box',
         url: '/box',
         component: Box,
+        isVisible: true
+    },
+    {
+        title: 'Text',
+        url: '/text',
+        component: Text,
         isVisible: true
     }
 ]

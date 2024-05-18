@@ -58,6 +58,7 @@ export class ViewBuilder implements ComponentConstructor {
 
             btnContainer.classList.add('items_small')
 
+            timeArea.classList.add('time-area')
             timeArea.textContent = datus.timestamp()
 
             canvas.id = 'chart'
@@ -204,6 +205,35 @@ export class ViewBuilder implements ComponentConstructor {
             container.appendChild(taskArea)
             container.appendChild(input)
             container.appendChild(btn)
+
+        } else if (this.key === '/text') {
+
+            headline.textContent = 'Math Text'
+
+            const textArea = document.createElement('textarea')
+            const taskArea = document.createElement('p')
+            const input = document.createElement('input')
+            const generateBtn = document.createElement('button')
+            const checkBtn = document.createElement('button')
+
+            textArea.classList.add('task-text')
+            textArea.placeholder = 'Enter your message...'
+            taskArea.classList.add('task-area')
+            taskArea.textContent = 'Task will be here...'
+            input.id = 'task-value'
+            input.setAttribute('type', 'text')
+            input.placeholder = 'Enter value'
+            generateBtn.id = 'task-generate'
+            generateBtn.textContent = 'Generate'
+            checkBtn.id = 'task-check'
+            checkBtn.textContent = 'Check'
+
+            container.appendChild(textArea)
+            container.appendChild(taskArea)
+            container.appendChild(generateBtn)
+            container.appendChild(input)
+         
+            container.appendChild(checkBtn)
         }
     }
 }   

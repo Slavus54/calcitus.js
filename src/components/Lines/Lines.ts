@@ -1,3 +1,4 @@
+import $ from 'jquery'
 import {fromEvent} from 'rxjs'
 import Centum from 'centum.js'
 import {Datus} from 'datus.js'
@@ -16,12 +17,12 @@ export class Lines extends ComponentContainer implements ComponentConstructor {
     }
 
     init() {
-        const area = document.querySelector('.task-area')
-        const select = document.getElementById('task-symbol')
-        const input = document.getElementById('task-value')
-        const rangeArea = document.getElementById('range-data')
-        const range = document.getElementById('task-range')
-        const btn = document.getElementById('task-check')
+        const area = $('.task-area')
+        const select = $('#task-symbol')
+        const input = $('#task-value')
+        const rangeArea = $('#range-data')
+        const range = $('#task-range')
+        const btn = $('#task-check')
 
         const centum = new Centum()
         const datus = new Datus()
@@ -35,28 +36,28 @@ export class Lines extends ComponentContainer implements ComponentConstructor {
 
         const line = generateLine(power)
        
-        area.textContent = line.text
+        area.text(line.text)
         start = line.start
         end = line.end
-        rangeArea.textContent = `Digit Order: ${power}`
+        rangeArea.text(`Digit Order: ${power}`)
 
-        select.addEventListener('input', e => {
+        select.on('input', e => {
             //@ts-ignore
             symbol = e.target.value
         })
 
-        input.addEventListener('input', e => {
+        input.on('input', e => {
             //@ts-ignore
             let data = parseInt(e.target.value)
             
             value = isNaN(data) ? 0 : data
         })
 
-        range.addEventListener('input', e => {
+        range.on('input', e => {
             //@ts-ignore
             power = centum.part(e.target.value, pointsLimit, 0)
 
-            rangeArea.textContent = `Digit Order: ${power}`
+            rangeArea.text(`Digit Order: ${power}`)
         })
 
         fromEvent(btn, 'click').subscribe(() => {
@@ -70,7 +71,7 @@ export class Lines extends ComponentContainer implements ComponentConstructor {
 
             const line = generateLine(power)
 
-            area.textContent = line.text
+            area.text(line.text)
             start = line.start
             end = line.end
         })       
