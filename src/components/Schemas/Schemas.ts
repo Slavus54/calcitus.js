@@ -89,7 +89,7 @@ export class Schemas extends ComponentContainer implements ComponentConstructor 
             if (inputValue === checkValue) {
                 allPoints += award
 
-                updateCurrentSession({game: GameTitles.Schemas, points: allPoints, timestamp: datus.timestamp()})
+                updateCurrentSession({game: GameTitles.Schemas, points: allPoints, timestamp: datus.now()})
             }
 
             area.text('Current Task')

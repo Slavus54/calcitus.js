@@ -1,8 +1,20 @@
 [
     {
-        "title": "Standard 1.0",
+        "title": "Standard Sum",
         "level": "Easy",
         "content": "x + x",
+        "marker": "x"
+    },
+    {
+        "title": "Smart Subtraction",
+        "level": "Easy",
+        "content": "y - (y / 5)",
+        "marker": "y"
+    },
+    {
+        "title": "Half Subtraction",
+        "level": "Easy",
+        "content": "x - x * 0.5",
         "marker": "x"
     },
     {
@@ -12,9 +24,27 @@
         "marker": "y"
     },
     {
+        "title": "Simple Devide Task",
+        "level": "Middle",
+        "content": "(x / 2) - 1",
+        "marker": "x"
+    },
+    {
+        "title": "Smart Multiple",
+        "level": "Middle",
+        "content": "y * (y - 1)",
+        "marker": "y"
+    },
+    {
         "title": "Powering Base",
         "level": "High",
         "content": "x**2",
+        "marker": "x"
+    },
+    {
+        "title": "Great Powering",
+        "level": "High",
+        "content": "(x + 1)**2",
         "marker": "x"
     },
     {
@@ -22,5 +52,11 @@
         "level": "Ultra",
         "content": "(y - 1)**y + 1",
         "marker": "y"
+    },
+    {
+        "title": "Fast Powering",
+        "level": "Ultra",
+        "content": "((x + 1) / 2)**2",
+        "marker": "x"
     }
 ]

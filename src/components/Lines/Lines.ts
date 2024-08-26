@@ -66,7 +66,7 @@ export class Lines extends ComponentContainer implements ComponentConstructor {
             if (result) {
                 points += power
 
-                updateCurrentSession({game: GameTitles.Lines, points, timestamp: datus.timestamp()})
+                updateCurrentSession({game: GameTitles.Lines, points, timestamp: datus.now()})
             }
 
             const line = generateLine(power)

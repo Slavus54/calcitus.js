@@ -5,7 +5,6 @@ import {generateTextTask} from '../../engine/engine'
 import {updateCurrentSession, checkCurrentSession} from '../../storage/storage'
 import {ComponentContainer} from '../ComponentContainer'
 import {ComponentConstructor, GameTitles} from '../../types/types'
-
 export class Text extends ComponentContainer implements ComponentConstructor {
 
     constructor() {
@@ -46,7 +45,6 @@ export class Text extends ComponentContainer implements ComponentConstructor {
         input.on('input', e => {
             //@ts-ignore
             inpValue = e.target.value
-            console.log(inpValue)
         })
 
         fromEvent(checkBtn, 'click').subscribe(() => {
@@ -56,7 +54,7 @@ export class Text extends ComponentContainer implements ComponentConstructor {
             if (inputValue === checkValue) {
                 points += taskPoints
 
-                updateCurrentSession({game: GameTitles.Text, points, timestamp: datus.timestamp()})
+                updateCurrentSession({game: GameTitles.Text, points, timestamp: datus.now()})
             }
 
    

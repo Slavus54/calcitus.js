@@ -61,12 +61,35 @@ export const generateTextTask: TextTaskGenerator = (content) => {
     return {text, value: eval(text), points: Math.floor(text.length / 2)}
 }
 
+export const generateGuessTask = (base = 1e2) => {
+    let task = `${Math.floor(base * Math.random())}${getRandomSymbol()}${Math.floor(base * Math.random())}`
+    let value = eval(task)
+
+    return {task, value}
+}
+
+export const checkGuessTask = (value = 1, answer = 1, isEven = true, symbol = '>') => {
+    let points = 0
+
+    if (eval(`${answer}${symbol}${value}`)) {
+        let difference = Math.abs(value - answer)
+        let percent = difference < value ? Math.round(2e1 - (difference / value) * 2e1) : 0
+        
+        points += answer % 2 === 0 && isEven && 5
+        points += answer % 2 !== 0 && !isEven && 5
+        points += percent
+    }
+
+    return points
+}
+
 const getRandomSymbol = () => symbols[Math.floor(symbols.length * Math.random())]
 
 const countPoints = (level: string, content: string, marker: string) => {
     let result = levels.indexOf(level) + 1
 
     result += textReplace(content, marker, 1).length - 1
+    result = Math.floor(result / 2)
 
     return result
 }

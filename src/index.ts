@@ -1,9 +1,7 @@
 import {Router} from './router/router'
 import {routes} from './router/routes'
 import schemas from './api/schemas.json'
-
 import {getSchemasFromStorage, initialGameResults, updateStorageValue} from './storage/storage'
-
 import {schemasStorageKey} from './env/env'
 
 import './style.css'

@@ -76,7 +76,7 @@ export class Box extends ComponentContainer implements ComponentConstructor {
             if (value === eval(area.text())) {
                 points += power * 2
             
-                updateCurrentSession({game: GameTitles.Box, points, timestamp: datus.timestamp()})
+                updateCurrentSession({game: GameTitles.Box, points, timestamp: datus.now()})
             }
 
             nums = generateBox(power)

@@ -1,8 +1,8 @@
 import {Datus} from 'datus.js'
 import {routes} from '../router/routes'
-import {getSchemasFromStorage} from '../storage/storage'
+import {getSchemasFromStorage, initialGameResults, getCurrentSession} from '../storage/storage'
 import {ComponentConstructor} from '../types/types'
-import {containerID, levels, symbols, boxSize} from '../env/env'
+import {containerID, levels, symbols, boxSize, sides} from '../env/env'
 
 export class ViewBuilder implements ComponentConstructor {
     key = ''
@@ -45,8 +45,15 @@ export class ViewBuilder implements ComponentConstructor {
             const saveBtn = document.createElement('button')
             const deleteBtn = document.createElement('button')
             const btnContainer = document.createElement('div')
+            const pointsArea = document.createElement('p')
             const timeArea = document.createElement('p')
             const canvas = document.createElement('canvas')
+
+            let results = initialGameResults()
+            let sessionPoints = getCurrentSession() !== null ? getCurrentSession().points : 0
+            let totalPoints = 0
+
+            results.map(el => totalPoints += el.points)
 
             description.textContent = 'Solve different mathematic tasks'
 
@@ -58,8 +65,11 @@ export class ViewBuilder implements ComponentConstructor {
 
             btnContainer.classList.add('items_small')
 
+            pointsArea.classList.add('points-area')
+            pointsArea.textContent = `Total: ${totalPoints} points | Session: ${sessionPoints} points`
+
             timeArea.classList.add('time-area')
-            timeArea.textContent = datus.timestamp()
+            timeArea.textContent = datus.now()            
 
             canvas.id = 'chart'
 
@@ -67,6 +77,7 @@ export class ViewBuilder implements ComponentConstructor {
             container.appendChild(canvas)
             btnContainer.appendChild(deleteBtn)
             btnContainer.appendChild(saveBtn)
+            container.appendChild(pointsArea)
             container.appendChild(timeArea)
             container.appendChild(btnContainer)
             
@@ -234,6 +245,57 @@ export class ViewBuilder implements ComponentConstructor {
             container.appendChild(input)
          
             container.appendChild(checkBtn)
+        } else if (this.key === '/guess') {
+
+            headline.textContent = 'Guess Math Task Solution'
+
+            const task = document.createElement('p')
+            const label = document.createElement('p')
+            const value = document.createElement('input')
+            const select = document.createElement('select')
+            const isEven = document.createElement('input')
+
+            const btnContainer = document.createElement('div')
+            const generateBtn = document.createElement('button')
+            const checkBtn = document.createElement('button')
+        
+            task.classList.add('task-area')
+            task.textContent = 'Task will be here...'
+            label.textContent = 'Is task solution even?'
+            value.id = 'task-value'
+            value.setAttribute('type', 'text')
+            value.placeholder = 'Enter approximate value'
+            select.id = 'select-side'
+            select.setAttribute('data-value', sides[0].symbol)
+            isEven.id = 'even-value'
+            isEven.type = 'checkbox'
+
+            btnContainer.classList.add('items_small')
+
+            generateBtn.id = 'generate-btn'
+            generateBtn.textContent = 'Generate'
+
+            checkBtn.id = 'check-btn'
+            checkBtn.textContent = 'Check'
+
+            btnContainer.appendChild(generateBtn)
+            btnContainer.appendChild(checkBtn)
+
+            sides.map(el => {
+                let option = document.createElement('option')
+
+                option.textContent = el.title
+                option.value = el.symbol
+
+                select.appendChild(option)
+            })
+
+            container.appendChild(task)
+            container.appendChild(value)
+            container.appendChild(select)
+            container.appendChild(label)
+            container.appendChild(isEven)
+            container.appendChild(btnContainer)
         }
     }
 }   

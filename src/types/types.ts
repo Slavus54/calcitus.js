@@ -62,7 +62,8 @@ export enum GameTitles {
     Schemas = 'Schemas',
     Lines = 'Lines',
     Box = 'Box',
-    Text = 'Text'
+    Text = 'Text',
+    Guess = 'Guess'
 }
 
 export type CheckStorageType = (title: string, isSession: boolean) => boolean 

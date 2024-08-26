@@ -3,6 +3,7 @@ import {Schemas} from '../components/Schemas/Schemas'
 import {Lines} from '../components/Lines/Lines'
 import {Box} from '../components/Box/Box'
 import {Text} from '../components/Text/Text'
+import {Guess} from '../components/Guess/Guess'
 
 import {RouteItem} from '../types/types'
 
@@ -35,6 +36,12 @@ export const routes: RouteItem[] = [
         title: 'Text',
         url: '/text',
         component: Text,
+        isVisible: true
+    },
+    {
+        title: 'Guess',
+        url: '/guess',
+        component: Guess,
         isVisible: true
     }
 ]

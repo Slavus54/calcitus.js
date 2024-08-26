@@ -2,8 +2,8 @@ import $ from 'jquery'
 import {fromEvent, interval, take} from 'rxjs'
 import {getCurrentSession, updateGameResults, initialGameResults, deleteGameResults} from '../../storage/storage'
 import {ComponentContainer} from '../ComponentContainer'
+import {times} from '../../env/env'
 import {ComponentConstructor} from '../../types/types'
-
 export class Welcome extends ComponentContainer implements ComponentConstructor {
 
     constructor() {
@@ -81,24 +81,13 @@ export class Welcome extends ComponentContainer implements ComponentConstructor 
         ctx.lineWidth = 4
         ctx.strokeStyle = '#125999'
 
-        // dots of results
-
-        let rectX = results.length * 1e2 + 5e1
-        let rectY = DPI_HEIGHT / 2
-        let rectSide = 0
-
         results.map((el, idx) => {
             let x = (idx + 1) * 1e2
             let y = DPI_HEIGHT - el.points * 1e1
 
-            rectSide += el.points
-
             ctx.lineTo(x, y)
             ctx.arc(x + 5, y, 10, 0, Math.PI * 2, true)
         })
-
-        ctx.strokeRect(rectX, rectY, rectSide, rectSide / 2)
-        ctx.fillText(`${rectSide} points`, rectX + .5e1, rectY + rectSide / 4)
 
         ctx.stroke()
         ctx.closePath()
@@ -118,8 +107,8 @@ export class Welcome extends ComponentContainer implements ComponentConstructor 
             window.location.reload()
         })
     
-        interval(1e3).pipe(take(5)).subscribe(() => {
-            console.log('Here are results', results)
+        interval(1e3).pipe(take(times)).subscribe(() => {
+            console.log(`Let's see results for ${times} times`, results)
         })
     }
 }
