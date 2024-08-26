@@ -2,9 +2,9 @@
 
 ### About      
 
-Web app with 4 mathematic game: **Schema, Line, Box and Text**    
+Web app with 5 mathematic game: **Schema, Line, Box, Text and Guess**    
 You can try to solve a lot of interesting task and earn points.    
-Save each game's points and look results on chart.    
+Save each game's points and look results on canvas chart.       
   
 ### Technologies   
 
